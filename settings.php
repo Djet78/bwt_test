@@ -7,6 +7,11 @@ const DB = [
     'host' => 'localhost',
     'dbname' => 'bwt',
     'user' => 'root',
-    'password' => 'Akabos123456S',
+    'password' => 'root',
+];
+
+//define your apps here
+const APPS = [
+    'weather' => 'weather_app',
 ];
 ?>

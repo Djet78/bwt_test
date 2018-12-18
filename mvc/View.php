@@ -17,7 +17,7 @@ class View{
             ob_start();
             require $this->path;
             $content = ob_get_clean();
-            require BASE_DIR . '/layouts/' . $this->layout . '.php';
+            require BASE_DIR . "/layouts/{$this->layout}.php";
         } else {
             echo 'No such view ' . $this->path;
         }
@@ -35,7 +35,7 @@ class View{
     }
     
     static function redirect($url){
-        header('location: ' . $url);
+        header("location: $url");
         exit;
     }
     
@@ -43,8 +43,7 @@ class View{
         $urls = require BASE_DIR . '/routes.php';
         foreach ($urls as $url => $params){
             if ($url_name == $params['name']){
-                header('location: ' . $url);
-                exit;
+                self::redirect($url_name);
             }
         }
     }

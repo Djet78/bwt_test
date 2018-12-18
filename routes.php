@@ -1,37 +1,37 @@
 <?php
 
-//define your apps and routes here
-const WEATHER = 'weather_app';
-
-
 return [
 
     '' => [
-        'app_name' => WEATHER,
+        'app_name' => APPS['weather'],
         'controller' => 'main',
         'action' => 'index',
         'name' => 'homepage',
+        'perm' => 'autorized',
     ],
     
     'feedback' => [
-        'app_name' => WEATHER,
+        'app_name' => APPS['weather'],
         'controller' => 'main',
         'action' => 'feedback',
         'name' => 'feedback',
+        'perm' => 'all',
     ],
 
-    '/login' => [
-        'app_name' => WEATHER,
+    'login' => [
+        'app_name' => APPS['weather'],
         'controller' => 'user',
         'action' => 'login',
         'name' => 'login',
+        'perm' => 'all',
     ],
     
-    '/register' => [
-        'app_name' => WEATHER,
+    'register' => [
+        'app_name' => APPS['weather'],
         'controller' => 'user',
         'action' => 'register',
         'name' => 'register',
+        'perm' => 'all',
     ],
     
 ];
