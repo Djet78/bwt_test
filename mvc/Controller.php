@@ -10,7 +10,7 @@ abstract class Controller{
     public $view;
     public $user_group;
     
-    public function __construct($route){
+    function __construct($route){
         $this->route = $route;
         $this->user_group = $_SESSION['user_group'];
         if (!$this->has_access()){
@@ -18,13 +18,6 @@ abstract class Controller{
         }
         $this->view = new View($route);
         $this->model = $this->load_model($route['controller']);
-    }
-    
-    private function load_model($name){
-        $path = "{$this->route['app_name']}\models\\" . ucfirst(strtolower($name)) . 'Model';
-        if (class_exists($path)){
-            return new $path();
-        }
     }
     
     private function has_access(){
@@ -35,6 +28,13 @@ abstract class Controller{
             return True;
         }
         return False;
+    }
+    
+    private function load_model($name){
+        $path = "{$this->route['app_name']}\models\\" . ucfirst(strtolower($name)) . 'Model';
+        if (class_exists($path)){
+            return new $path();
+        }
     }
 }
 ?>

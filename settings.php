@@ -3,6 +3,7 @@ const BASE_DIR = __DIR__;
 
 const DEBUG = True;
 
+// PDO mysql connection settings
 const DB = [
     'host' => 'localhost',
     'dbname' => 'bwt',

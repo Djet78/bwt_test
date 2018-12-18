@@ -15,7 +15,6 @@ class Db {
     function query($sql, $params = []){
         $query = $this->db->prepare($sql);
         foreach($params as $key => $value){
-            echo "$key, $value";
             $query->bindValue(':'.$key, $value);
         }
         $query->execute();

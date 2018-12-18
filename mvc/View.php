@@ -4,15 +4,19 @@ namespace mvc;
 
 class View{
     
-    public $path;
-    public $layout = 'default';
+    private $path;
+    private $layout = 'default';
         
-    public function __construct($route){
+    function __construct($route){
         $this->path = "{$route['app_name']}/views/{$route['controller']}/{$route['action']}.php";
     }
-
-    public function render($title, $vars = []){
-        extract($vars);
+    
+    /**
+     *@param string $title   Used in <title> tag in the '$this->layout'
+     *@param array  $context  Used to access extra data in views
+     */
+    function render($title, $context = []){
+        extract($context);
         if (file_exists($this->path)){
             ob_start();
             require $this->path;
@@ -23,9 +27,9 @@ class View{
         }
     }
     
-    public static function error_code($code){
+    static function render_error_page($code){
         http_response_code($code);
-        $path = BASE_DIR .'/mvc/view_errors/' . $code . '.php';
+        $path = BASE_DIR ."/mvc/view_errors/{$code}.php";
         if (file_exists($path)){
             require $path;
         } else {
@@ -40,8 +44,8 @@ class View{
     }
     
     static function redirect_by_name($url_name){
-        $urls = require BASE_DIR . '/routes.php';
-        foreach ($urls as $url => $params){
+        $routes = require BASE_DIR . '/routes.php';
+        foreach ($routes as $url => $params){
             if ($url_name == $params['name']){
                 self::redirect($url);
             }
