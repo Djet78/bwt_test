@@ -43,7 +43,7 @@ class View{
         $urls = require BASE_DIR . '/routes.php';
         foreach ($urls as $url => $params){
             if ($url_name == $params['name']){
-                self::redirect($url_name);
+                self::redirect($url);
             }
         }
     }
