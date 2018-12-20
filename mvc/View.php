@@ -13,7 +13,7 @@ class View{
     
     /**
      *@param string $title   Used in <title> tag in the '$this->layout'
-     *@param array  $context  Used to access extra data in views
+     *@param array  $context  Used to pass extra data in views
      */
     function render($title, $context = []){
         extract($context);

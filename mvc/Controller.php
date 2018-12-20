@@ -8,6 +8,7 @@ abstract class Controller{
     
     public $route;
     public $view;
+    public $model;
     public $user_group;
     
     function __construct($route){
