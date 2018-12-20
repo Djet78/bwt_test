@@ -7,11 +7,13 @@ use mvc\Controller;
 class UserController extends Controller{
     
     function login(){
-        $this->view->render('Login page!');
+        $context = ['model' => $this->model];
+        $this->view->render('Login page!', $context);
     }
     
     function register(){
-        $this->view->render('Register page!');
+        $context = ['model' => $this->model];
+        $this->view->render('Register page!', $context);
     }
     
     function logout(){

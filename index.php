@@ -4,6 +4,7 @@ require 'mvc/utils/autoload.php';
 require 'settings.php';
 
 if (DEBUG){
+    require 'mvc/utils/debug.php';
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
 }
@@ -17,6 +18,6 @@ if (!isset($_SESSION['user_group'])){
 }
 
 $router = new Router();
-$router->run()
+$router->run();
 
 ?>
