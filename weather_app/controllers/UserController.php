@@ -12,7 +12,14 @@ class UserController extends Controller{
     }
     
     function register(){
-        $context = ['model' => $this->model];
+        $model = $this->model;
+        if (!empty($_POST)){
+            $model->handle_input('POST');
+            if (empty($model->post_handler->validation_errors)){
+                //register user
+            }
+        }
+        $context = ['model' => $model];
         $this->view->render('Register page!', $context);
     }
     

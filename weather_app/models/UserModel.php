@@ -5,7 +5,7 @@ namespace weather_app\models;
 use mvc\Model;
 
 class UserModel extends Model{
-    
+    /*
     const REQUIRED_FIELDS = [
         'POST'=> [
             'firstname',
@@ -15,7 +15,7 @@ class UserModel extends Model{
             'email',
             ],
     ];
-
+    */
     const FIELDS_PROCESSING = [
         'POST' => [
             'firstname' => [
@@ -32,12 +32,21 @@ class UserModel extends Model{
                 ['validate_len', ['min' => 6, 'max' => 128]],
                 ['compare_passwords', ['password_field_2' => 'password_2']],
                 ['password_hash_', ['algo' => PASSWORD_DEFAULT]],
-                
             ],
             'email' => [
+                ['trim_', []],
                 ['htmlspecialchars_', []],
                 ['validate_email', []],
                 ['validate_len', ['min' => 5, 'max' => 50]],
+            ],
+            'gender' => [
+                ['validate_choice', ['choices' => ['m', 'f']]],
+            ],
+            'birthday' => [
+                ['str_to_datetime', ['format' => "!Y-m-d"]],
+                ['validate_datetime_range', ['format' => "!Y-m-d", 
+                                             'min_date' => '1900-01-01', 
+                                             'max_date' => '2018-01-01',]],
             ],
         ],
     ];
