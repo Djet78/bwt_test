@@ -9,10 +9,12 @@ class Db {
     protected $db;
     
     function __construct(){
-        $this->db = new PDO('mysql:host='.DB['host'].'; dbname='.DB['dbname'], DB['user'], DB['password']);
+        $this->db = new PDO('mysql:host='.DB['host'].'; dbname='.DB['dbname']. '; charset=utf8', 
+                            DB['user'],     
+                            DB['password']);
     }
     
-    function query($sql, $params = []){
+    function exec_query($sql, $params = []){
         $query = $this->db->prepare($sql);
         foreach($params as $key => $value){
             $query->bindValue(':'.$key, $value);
@@ -22,13 +24,13 @@ class Db {
     }
     
     function row($sql, $params = []){
-        $result = $this->query($sql, $params);
+        $result = $this->exec_query($sql, $params);
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
     
     function column($sql, $params = []){
-        $result = $this->query($sql, $params);
-        return $result->fetchColumn(PDO::FETCH_ASSOC);
+        $result = $this->exec_query($sql, $params);
+        return $result->fetchColumn();
     }
 }
 ?>

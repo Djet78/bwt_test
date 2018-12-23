@@ -37,7 +37,7 @@ class UserInputHandler {
     
     
     // `````````````````````````````````````````````````````````````
-    // Filters
+    // Cleaners
     // .............................................................    
     
     function strip_tags_($field){
@@ -107,9 +107,16 @@ class UserInputHandler {
             $this->put_error($field, "Date cannot be bigger than: {$max_date->Format('d-M-Y')}");
         }
     }
+    
+    function is_empty_field($field){
+        if (!isset($this->http_method_ref[$field])){
+            return True;
+        }
+        return ($this->http_method_ref[$field] == '');
+    }
 
     // `````````````````````````````````````````````````````````````
-    // Utility
+    // Handlers
     // .............................................................
        
     function password_hash_($algo, $field){
@@ -139,7 +146,7 @@ class UserInputHandler {
     // For errors handling
     // .............................................................    
      
-    private function put_error($field, $msg){
+    function put_error($field, $msg){
        $this->validation_errors[$field][] = $msg;
     }
     

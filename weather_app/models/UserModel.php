@@ -5,7 +5,7 @@ namespace weather_app\models;
 use mvc\Model;
 
 class UserModel extends Model{
-    /*
+
     const REQUIRED_FIELDS = [
         'POST'=> [
             'firstname',
@@ -13,9 +13,9 @@ class UserModel extends Model{
             'password',
             'password_2',
             'email',
-            ],
+        ],
     ];
-    */
+
     const FIELDS_PROCESSING = [
         'POST' => [
             'firstname' => [
@@ -51,12 +51,26 @@ class UserModel extends Model{
         ],
     ];
     
-    /**
-     *@param array $email should be like : ['email' => 'entered_email'] 
-     */
-    function get_user($email){      // 'It's tmp query. '*' char will be replaced'
-        $result = $this->db->column('SELECT * FROM users WHERE email = :email', $email);
+    function get_user($db_field, $input_field){
+        $params = ["$db_field" => $_POST[$input_field],];
+        $result = $this->db->column("SELECT `$db_field` FROM users WHERE $db_field = :$db_field;", $params);
         return $result;
+    }
+    
+    function register_user(){
+        $sql = <<<'INSERT'
+            INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `gender`, `birthday`) 
+            VALUES (:firstname, :lastname, :email, :password, :gender, :birthday);
+INSERT;
+        $params = [
+            'firstname' => $_POST['firstname'],
+            'lastname' => $_POST['lastname'],
+            'email' => $_POST['email'],
+            'password' => $_POST['password'],
+            'gender' => isset($_POST['gender']) ? $_POST['gender'] : null,
+            'birthday' => (isset($_POST['birthday']) && $_POST['birthday'] != "") ? $_POST['birthday']->Format("Y-m-d") : null,
+        ];
+        $this->db->exec_query($sql, $params);
     }
 }
 ?>

@@ -25,12 +25,18 @@ abstract class Model{
         $handler = $this->get_user_input_handler($http_method);
         $cls = get_called_class();
         
-        $handler->have_required_fields($cls::REQUIRED_FIELDS[$http_method]);
-
-        // Get only entered fields which should be processed
-        $process_fields = array_intersect_key($cls::FIELDS_PROCESSING[$http_method], $handler->http_method_ref);
+        $required_fields = $cls::REQUIRED_FIELDS[$http_method];
+        $handler->have_required_fields($required_fields);
         
+        $process_fields = $cls::FIELDS_PROCESSING[$http_method];       
         foreach($process_fields as $field =>$funcs){
+            
+            // Skip proccesing for that field
+            $is_empty_and_not_required = $handler->is_empty_field($field) && !in_array($field, $required_fields);
+            if($is_empty_and_not_required){
+                continue;
+            }
+            
             foreach($funcs as list($func, $params)){
                 $params['field'] = $field;
                 call_user_func_array([$handler, $func], $params);

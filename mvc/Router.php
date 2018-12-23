@@ -46,6 +46,9 @@ class Router {
     
     private function is_match(){
         $url = ltrim($_SERVER['REQUEST_URI'], '/');
+        // Remove get prameters from url
+        $url = explode('?', $url)[0];
+        
         foreach($this->routes as $route => $params){
             if (preg_match($route, $url)){
                 $this->params = $params;
