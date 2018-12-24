@@ -60,9 +60,9 @@ class UserInputHandler {
     // Validators
     // .............................................................
     
-    function have_required_fields($required_fields = []){
+    function have_required_fields($required_fields){
         foreach($required_fields as $field){
-            if ($this->http_method_ref[$field] == ''){
+            if($this->is_empty_field($field)){
                 $this->put_error($field, 'Field is required.');
             }
         }
@@ -120,7 +120,7 @@ class UserInputHandler {
     // .............................................................
        
     function password_hash_($algo, $field){
-        if (!isset($this->validation_errors[$field])){
+        if (empty($this->validation_errors)){
             $hash = password_hash($this->http_method_ref[$field], $algo);
             if ($hash == False){
                 // It's not final desion for this case.
@@ -138,6 +138,14 @@ class UserInputHandler {
             $this->put_error($field, 'It`s not a valid date');
         } else {
             $this->http_method_ref[$field] = $date;
+        }
+    }
+    
+    function password_verify_($hash, $field){
+        $password = $this->http_method_ref[$field];
+        $res = password_verify($password, $hash);
+        if($res == False){
+            $this->put_error($field, 'Passwords don`t match');
         }
     }
 

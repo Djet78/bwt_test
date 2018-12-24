@@ -19,18 +19,18 @@ class Db {
         foreach($params as $key => $value){
             $query->bindValue(':'.$key, $value);
         }
-        $query->execute();
-        return $query;
+        $res = $query->execute();
+        return ['res' => $res, 'query' => $query];
     }
     
     function row($sql, $params = []){
-        $result = $this->exec_query($sql, $params);
-        return $result->fetchAll(PDO::FETCH_ASSOC);
+        $query = $this->exec_query($sql, $params)['query'];
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     
     function column($sql, $params = []){
-        $result = $this->exec_query($sql, $params);
-        return $result->fetchColumn();
+        $query = $this->exec_query($sql, $params)['query'];
+        return $query->fetchColumn();
     }
 }
 ?>
