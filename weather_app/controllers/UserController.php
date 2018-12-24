@@ -99,7 +99,8 @@ class UserController extends Controller{
     }
     
     function logout(){
-        $this->view->render('Logout page!');
+        $_SESSION['user_group'] = 'guest';
+        $this->view::redirect_by_name('login');
     }
 }
 ?>
