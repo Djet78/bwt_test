@@ -1,7 +1,7 @@
 <?php
 namespace mvc;
 
-use mvc\View;
+use mvc\view\View;
 
 class Router
 {

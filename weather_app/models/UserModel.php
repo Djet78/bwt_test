@@ -2,7 +2,7 @@
 
 namespace weather_app\models;
 
-use mvc\Model;
+use mvc\model\Model;
 
 class UserModel extends Model
 {

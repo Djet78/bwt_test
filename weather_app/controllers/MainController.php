@@ -47,7 +47,11 @@ class MainController extends Controller
             }
         }
         
-        $result = $this->model->getFeedbacks();
+        if ($_SESSION['user_group'] == 'autorized') {
+            $result = $this->model->getFeedbacks();
+        } else {
+            $result = [];
+        }
         $context = [
             'feedbacks' => $result, 
             'handler' => $handler,

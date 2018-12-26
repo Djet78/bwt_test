@@ -1,7 +1,7 @@
 <?php
-namespace mvc;
+namespace mvc\model;
 
-use mvc\Db;
+use mvc\model\Db;
 
 abstract class Model
 {

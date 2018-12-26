@@ -1,8 +1,8 @@
 <?php
 namespace mvc;
 
-use mvc\View;
-use mvc\UserInputHandler;
+use mvc\view\View;
+use mvc\utils\UserInputHandler;
 
 abstract class Controller
 {
@@ -46,6 +46,6 @@ abstract class Controller
         $path = "{$this->route['app_name']}\models\\" . ucfirst(strtolower($name)) . 'Model';
         if (class_exists($path)) {
             return new $path();
-        }
+        } 
     }
 }

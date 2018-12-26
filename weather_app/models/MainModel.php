@@ -1,7 +1,7 @@
 <?php
 namespace weather_app\models;
 
-use mvc\Model;
+use mvc\model\Model;
 
 class MainModel extends Model
 {

@@ -1,7 +1,8 @@
 <?php
-namespace mvc;
+namespace mvc\utils;
 
 use DateTime;
+use InvalidArgumentException;
 
 // `````````````````````````````````````````````````````````````
 // I will work around possible exeptions handling in the future.
@@ -32,7 +33,7 @@ class UserInputHandler
         } elseif ($http_method == 'GET') {
             return $_GET;
         } else {
-            // Throw exception
+            throw new InvalidArgumentException(get_called_class() . " awaits only 'POST' or 'GET' as argument");
         }
     }
     

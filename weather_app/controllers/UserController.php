@@ -91,7 +91,7 @@ class UserController extends Controller
                     if ($res == true) {
                         $this->view::redirectByName('login');
                     } else {
-                        // Send failure msg
+                        $this->view::renderErrorPage(500);
                     }
                 }
             }

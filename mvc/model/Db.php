@@ -1,5 +1,5 @@
 <?php
-namespace mvc;
+namespace mvc\model;
 
 use PDO;
 
@@ -21,7 +21,8 @@ class Db
         $this->db = new PDO(
             'mysql:host='.DB['host'].'; dbname='.DB['dbname']. '; charset=utf8', 
             DB['user'],     
-            DB['password']
+            DB['password'],
+            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
         );
     }
     

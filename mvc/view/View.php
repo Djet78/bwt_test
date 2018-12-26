@@ -1,5 +1,9 @@
 <?php
-namespace mvc;
+namespace mvc\view;
+
+require 'view_errors.php';
+
+use NoViewError;
 
 class View
 {    
@@ -24,18 +28,18 @@ class View
             $content = ob_get_clean();
             require BASE_DIR . "/layouts/{$this->layout}.php";
         } else {
-            echo 'No such view ' . $this->path;
+            throw new NoViewError('No such view ' . $this->path);
         }
     }
     
     public static function renderErrorPage($code)
     {
         http_response_code($code);
-        $path = BASE_DIR ."/mvc/view_errors/{$code}.php";
+        $path = BASE_DIR ."/mvc/view/http_error_pages/{$code}.php";
         if (file_exists($path)) {
             require $path;
         } else {
-            echo 'No such error view ' . $path;
+            require BASE_DIR ."/mvc/view/http_error_pages/default.php";
         }
         exit;
     }
