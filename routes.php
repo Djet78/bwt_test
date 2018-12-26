@@ -1,5 +1,4 @@
 <?php
-
 /*
 Reference to following example to specify routes:
 
@@ -79,5 +78,3 @@ return [
     ],
     
 ];
-
-?>

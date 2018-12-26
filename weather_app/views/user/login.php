@@ -2,7 +2,7 @@
 
 <form method="POST">      
     <p>Email*</p>
-        <?php $handler->display_errors_if_have('email'); ?>
+        <?php $handler->displayErrorsIfErrors('email'); ?>
         <input type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" required> 
         
     <p>Password*</p>

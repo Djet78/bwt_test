@@ -15,4 +15,3 @@ const DB = [
 const APPS = [
     'weather' => 'weather_app',
 ];
-?>

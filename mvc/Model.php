@@ -1,15 +1,14 @@
 <?php
-
 namespace mvc;
 
 use mvc\Db;
 
-abstract class Model{
-    
+abstract class Model
+{
     public $db;
     
-    function __construct(){
+    function __construct()
+    {
         $this->db = new Db;
     }
 }
-?>

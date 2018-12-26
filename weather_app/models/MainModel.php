@@ -1,17 +1,18 @@
 <?php
-
 namespace weather_app\models;
 
 use mvc\Model;
 
-class MainModel extends Model{
-    
-    function get_feedbacks(){
+class MainModel extends Model
+{
+    public function getFeedbacks()
+    {
         $result = $this->db->row('SELECT `name`, `body`, `email` FROM feedback;');
         return $result;
     }
     
-    function add_feedback(){
+    public function saveFeedback()
+    {
         $sql = <<<'INSERT'
             INSERT INTO `feedback` (`name`, `body`, `email`) 
             VALUES (:name, :body, :email);
@@ -21,8 +22,7 @@ INSERT;
             'body' => $_POST['body'],
             'email' => $_POST['email'],
         ];
-        $res = $this->db->exec_query($sql, $params)['res'];
+        $res = $this->db->execQuery($sql, $params)['res'];
         return $res;
     }
 }
-?>

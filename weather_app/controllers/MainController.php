@@ -1,19 +1,20 @@
 <?php
-
 namespace weather_app\controllers;
 
 use mvc\Controller;
 
-class MainController extends Controller{
-    
-    function index(){
+class MainController extends Controller
+{
+    public function index()
+    {
         $this->view->render('Main page!');
     }
     
-    function feedback(){
+    public function feedback()
+    {
         $handler = $this->post_handler;
         
-        if (!empty($_POST)){
+        if (!empty($_POST)) {
             
             $required_fields = [
                 'name',
@@ -25,7 +26,7 @@ class MainController extends Controller{
                 'name' => [
                     ['trim_', []],
                     ['htmlspecialchars_', []],
-                    ['validate_len', ['min' => 2, 'max' => 50]],
+                    ['validateLen', ['min' => 2, 'max' => 50]],
                 ],
                 'body' => [
                     ['trim_', []],
@@ -34,19 +35,19 @@ class MainController extends Controller{
                 'email' => [
                     ['trim_', []],
                     ['htmlspecialchars_', []],
-                    ['validate_email', []],
-                    ['validate_len', ['min' => 5, 'max' => 50]],
+                    ['validateEmail', []],
+                    ['validateLen', ['min' => 5, 'max' => 50]],
                 ],
             ];
                
-            $this->handle_input('POST', $required_fields, $fields_processing);
+            $this->handleInput('POST', $required_fields, $fields_processing);
             
-            if(empty($handler->validation_errors)){
-                $this->model->add_feedback();
+            if (empty($handler->validation_errors)) {
+                $this->model->saveFeedback();
             }
         }
         
-        $result = $this->model->get_feedbacks();
+        $result = $this->model->getFeedbacks();
         $context = [
             'feedbacks' => $result, 
             'handler' => $handler
@@ -54,4 +55,3 @@ class MainController extends Controller{
         $this->view->render('Feedback page!', $context);
     }
 }
-?>

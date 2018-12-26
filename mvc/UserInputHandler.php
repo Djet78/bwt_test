@@ -1,5 +1,4 @@
 <?php
-
 namespace mvc;
 
 use DateTime;
@@ -8,8 +7,8 @@ use DateTime;
 // I will work around possible exeptions handling in the future.
 // .............................................................
 
-class UserInputHandler {
-    
+class UserInputHandler
+{
     /* 
      *  $validation_errors = [
      *           'field_name'=> ['msg_1', 'msg_2', ...], 
@@ -20,15 +19,17 @@ class UserInputHandler {
     public $http_method_ref;
     public $validation_errors = [];
 
-    function __construct(string $http_method){
-        $this->http_method_ref = & $this->get_http_method_ref($http_method);
+    public function __construct(string $http_method)
+    {
+        $this->http_method_ref = & $this->getHttpMethodRef($http_method);
     }
 
-    private function &get_http_method_ref(string $http_method){
+    private function &getHttpMethodRef(string $http_method)
+    {
         $http_method = strtoupper($http_method);
-        if ($http_method == 'POST'){
+        if ($http_method == 'POST') {
             return $_POST;
-        } else if ($http_method == 'GET'){
+        } elseif ($http_method == 'GET') {
             return $_GET;
         } else {
             // Throw exception
@@ -40,19 +41,22 @@ class UserInputHandler {
     // Cleaners
     // .............................................................    
     
-    function strip_tags_($field){
-        $value = strip_tags($this->http_method_ref[$field]);
-        $this->http_method_ref[$field] = $value;
+    public function stripTags($field)
+    {
+        $input = strip_tags($this->http_method_ref[$field]);
+        $this->http_method_ref[$field] = $input;
     }
         
-    function trim_($field){
-        $value = trim($this->http_method_ref[$field]);
-        $this->http_method_ref[$field] = $value;
+    public function trim_($field)
+    {
+        $input = trim($this->http_method_ref[$field]);
+        $this->http_method_ref[$field] = $input;
     }    
     
-    function htmlspecialchars_($field){
-        $value = htmlspecialchars($this->http_method_ref[$field]);
-        $this->http_method_ref[$field] = $value;
+    public function htmlspecialchars_($field)
+    {
+        $input = htmlspecialchars($this->http_method_ref[$field]);
+        $this->http_method_ref[$field] = $input;
     }
     
     
@@ -60,57 +64,64 @@ class UserInputHandler {
     // Validators
     // .............................................................
     
-    function have_required_fields($required_fields){
-        foreach($required_fields as $field){
-            if($this->is_empty_field($field)){
-                $this->put_error($field, 'Field is required.');
+    public function haveRequiredFields($required_fields)
+    {
+        foreach ($required_fields as $field) {
+            if ($this->isEmptyField($field)) {
+                $this->putError($field, 'Field is required.');
             }
         }
     }
     
-    function validate_len($min, $max, $field){
+    public function validateLen($min, $max, $field)
+    {
         $len = strlen($this->http_method_ref[$field]);
-        if (!($min <= $len)){
-            $this->put_error($field, "Too short. Must be at least $min characters");
-        } else if(!($len <= $max)){
-            $this->put_error($field, "Too long. Must be no longer than $max characters");
+        if (!($min <= $len)) {
+            $this->putError($field, "Too short. Must be at least $min characters");
+        } elseif (!($len <= $max)) {
+            $this->putError($field, "Too long. Must be no longer than $max characters");
         }
     }
     
-    function compare_passwords($password_field_2, $password_field_1){
-        if ($this->http_method_ref[$password_field_1] !== $this->http_method_ref[$password_field_2]){
-            $this->put_error($password_field_1, 'Passwords don`t match');
+    public function comparePasswords($password_field_2, $password_field_1)
+    {
+        if ($this->http_method_ref[$password_field_1] !== $this->http_method_ref[$password_field_2]) {
+            $this->putError($password_field_1, 'Passwords don`t match');
         }
     }
 
-    function validate_email($field){
+    public function validateEmail($field)
+    {
         $email = $this->http_method_ref[$field];
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $this->put_error($field, 'It`s not valid email');
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->putError($field, 'It`s not valid email');
         }
     }
     
-    function validate_choice($choices_arr, $field){
+    public function validateChoice($choices_arr, $field)
+    {
         $choice = $this->http_method_ref[$field];
-        if (!in_array($choice, $choices_arr)){
-            $this->put_error($field, 'We have no such choice');
+        if (!in_array($choice, $choices_arr)) {
+            $this->putError($field, 'We have no such choice');
         }
     }
     
-    function validate_datetime_range($format, $min_date, $max_date, $field){
+    public function validateDatetimeRange($format, $min_date, $max_date, $field)
+    {
         $date = $this->http_method_ref[$field];
         $min_date = DateTime::createFromFormat($format, $min_date);
         $max_date = DateTime::createFromFormat($format, $max_date);
-        if (!($min_date <= $date)){
-            $this->put_error($field, "Date cannot be less than: {$min_date->Format('d-M-Y')}");
-        } else if (!($date <= $max_date)) {
-            $this->put_error($field, "Date cannot be bigger than: {$max_date->Format('d-M-Y')}");
+        if (!($min_date <= $date)) {
+            $this->putError($field, "Date cannot be less than: {$min_date->Format('d-M-Y')}");
+        } elseif (!($date <= $max_date)) {
+            $this->putError($field, "Date cannot be bigger than: {$max_date->Format('d-M-Y')}");
         }
     }
     
-    function is_empty_field($field){
-        if (!isset($this->http_method_ref[$field])){
-            return True;
+    public function isEmptyField($field)
+    {
+        if (!isset($this->http_method_ref[$field])) {
+            return true;
         }
         return ($this->http_method_ref[$field] == '');
     }
@@ -119,33 +130,36 @@ class UserInputHandler {
     // Handlers
     // .............................................................
        
-    function password_hash_($algo, $field){
+    public function passwordHash($algo, $field)
+    {
         if (empty($this->validation_errors)){
             $hash = password_hash($this->http_method_ref[$field], $algo);
-            if ($hash == False){
+            if ($hash == false) {
                 // It's not final desion for this case.
-                $this->put_error($field, 'Problems occured while password hashing');
+                $this->putError($field, 'Problems occured while password hashing');
             } else {
                 $this->http_method_ref[$field] = $hash;
             }
         }
     }
     
-    function str_to_datetime($format, $field){
+    public function strToDatetime($format, $field)
+    {
         $str_date = $this->http_method_ref[$field];
         $date = DateTime::createFromFormat($format, $str_date);
-        if($date == False){
-            $this->put_error($field, 'It`s not a valid date');
+        if ($date == false) {
+            $this->putError($field, 'It`s not a valid date');
         } else {
             $this->http_method_ref[$field] = $date;
         }
     }
     
-    function password_verify_($hash, $field){
+    public function passwordVerify($hash, $field)
+    {
         $password = $this->http_method_ref[$field];
         $res = password_verify($password, $hash);
-        if($res == False){
-            $this->put_error($field, 'Passwords don`t match');
+        if ($res == false) {
+            $this->putError($field, 'Passwords don`t match');
         }
     }
 
@@ -154,17 +168,17 @@ class UserInputHandler {
     // For errors handling
     // .............................................................    
      
-    function put_error($field, $msg){
+    public function putError($field, $msg)
+    {
        $this->validation_errors[$field][] = $msg;
     }
     
-    function display_errors_if_have($field){
-        if (isset($this->validation_errors[$field])){
-            foreach($this->validation_errors[$field] as $err){
+    public function displayErrorsIfErrors($field)
+    {
+        if (isset($this->validation_errors[$field])) {
+            foreach ($this->validation_errors[$field] as $err) {
                 echo "$err <br>";
             }
         }
-    }    
+    }
 }
-
-?>
