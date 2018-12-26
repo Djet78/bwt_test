@@ -58,7 +58,7 @@ return [
         'controller' => 'user',
         'action' => 'login',
         'name' => 'login',
-        'perm' => 'all',
+        'perm' => 'guest',
     ],
     
     'register' => [
@@ -66,7 +66,7 @@ return [
         'controller' => 'user',
         'action' => 'register',
         'name' => 'register',
-        'perm' => 'all',
+        'perm' => 'guest',
     ],
     
     'logout' => [

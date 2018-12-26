@@ -18,7 +18,11 @@ abstract class Controller
         $this->route = $route;
         $this->view = new View($route);
         if (!$this->userHasAccess()) {
-            $this->view::redirectByName('login');
+            if ($_SESSION['user_group'] != 'autorized') {
+                $this->view::redirectByName('login');
+            } else {
+                $this->view::redirectByName('homepage');
+            }
         }
         $this->model = $this->loadModel($route['controller']);
         $this->post_handler = new UserInputHandler('POST');
