@@ -6,8 +6,17 @@ use PDO;
 class Db 
 {
     protected $db;
+    private static $instance = null;
     
-    public function __construct()
+    public static function getInstance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+    
+    private function __construct()
     {
         $this->db = new PDO(
             'mysql:host='.DB['host'].'; dbname='.DB['dbname']. '; charset=utf8', 
@@ -15,6 +24,8 @@ class Db
             DB['password']
         );
     }
+    
+    private function __clone() {}
     
     public function execQuery($sql, $params = [])
     {

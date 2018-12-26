@@ -9,6 +9,6 @@ abstract class Model
     
     function __construct()
     {
-        $this->db = new Db;
+        $this->db = Db::getInstance();
     }
 }
