@@ -7,7 +7,7 @@
         
     <p>Leave a feedback*</p>
         <?php $handler->displayErrorsIfErrors('body'); ?>
-        <textarea rows="10" cols="45" name="body" value="<?php echo isset($_POST['body']) ?  $_POST['body'] : ''; ?>" required></textarea>
+        <textarea rows="10" cols="45" name="body" required><?php echo isset($_POST['body']) ?  $_POST['body'] : ''; ?></textarea>
         
     <p>Email*</p>
         <?php $handler->displayErrorsIfErrors('email'); ?>

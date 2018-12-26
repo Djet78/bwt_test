@@ -44,37 +44,4 @@ abstract class Controller
             return new $path();
         }
     }
-    
-    public function handleInput(string $http_method, $required_fields, $process_fields)
-    {
-        $http_method = strtoupper($http_method);
-        $handler = $this->getUserInputHandler($http_method);
-        
-        $handler->haveRequiredFields($required_fields);
-     
-        foreach ($process_fields as $field => $funcs) {
-            
-            // Skip proccesing for that field
-            $is_empty_and_not_required = $handler->isEmptyField($field) && !in_array($field, $required_fields);
-            if($is_empty_and_not_required){
-                continue;
-            }
-            
-            foreach ($funcs as list($func, $params)) {
-                $params['field'] = $field;
-                call_user_func_array([$handler, $func], $params);
-            }
-        }
-    }
-    
-    private function getUserInputHandler(string $http_method)
-    {
-        if ($http_method == 'POST'){
-            return $this->post_handler;
-        } else if ($http_method == 'GET'){
-            return $this->get_handler;
-        } else {
-            // Throw exception
-        }
-    }
 }

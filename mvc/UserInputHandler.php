@@ -163,7 +163,24 @@ class UserInputHandler
         }
     }
 
-
+    public function handleInput($required_fields, $process_fields)
+    {
+        $this->haveRequiredFields($required_fields);
+     
+        foreach ($process_fields as $field => $funcs) {
+            
+            // Skip proccesing for that field
+            $is_empty_and_not_required = $this->isEmptyField($field) && !in_array($field, $required_fields);
+            if ($is_empty_and_not_required) {
+                continue;
+            }
+            
+            foreach ($funcs as list($func, $params)) {
+                $params['field'] = $field;
+                call_user_func_array([$this, $func], $params);
+            }
+        }
+    }
     // `````````````````````````````````````````````````````````````
     // For errors handling
     // .............................................................    

@@ -40,7 +40,7 @@ class MainController extends Controller
                 ],
             ];
                
-            $this->handleInput('POST', $required_fields, $fields_processing);
+            $handler->handleInput($required_fields, $fields_processing);
             
             if (empty($handler->validation_errors)) {
                 $this->model->saveFeedback();
@@ -50,7 +50,7 @@ class MainController extends Controller
         $result = $this->model->getFeedbacks();
         $context = [
             'feedbacks' => $result, 
-            'handler' => $handler
+            'handler' => $handler,
         ];
         $this->view->render('Feedback page!', $context);
     }

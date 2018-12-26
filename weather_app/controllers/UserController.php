@@ -35,6 +35,8 @@ class UserController extends Controller
     
     public function register()
     {
+        $handler = $this->post_handler;
+        
         if (!empty($_POST)){
             
             $required_fields = [
@@ -78,12 +80,12 @@ class UserController extends Controller
                 ],
             ];
             
-            $this->handleInput('POST', $required_fields, $fields_processing);
+            $handler->handleInput($required_fields, $fields_processing);
             
-            if (empty($this->post_handler->validation_errors)) {
+            if (empty($handler->validation_errors)) {
                 $exist_user = $this->model->getUser('email', 'email', '`id`');
                 if ($exist_user) {
-                    $this->post_handler->putError('email', 'User with this email is already exist');
+                    $handler->putError('email', 'User with this email is already exist');
                 } else {
                     $res = $this->model->saveUser();
                     if ($res == true) {
@@ -94,7 +96,7 @@ class UserController extends Controller
                 }
             }
         }
-        $context = ['handler' => $this->post_handler];
+        $context = ['handler' => $handler];
         $this->view->render('Register page!', $context);
     }
     
