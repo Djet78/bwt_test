@@ -1,4 +1,4 @@
-<h2>I am feedback page</h2>
+<h2>I am post feedback page</h2>
 
 <form method="POST">
     <p>Name*</p>
@@ -15,15 +15,4 @@
 
     <p></p>
     <input type="submit" value="Submit">
-    
-    <hr>
 </form>
-
-<?php 
-    foreach($feedbacks as $feedback){
-        echo "Name: {$feedback['name']} <br>";
-        echo "Body: {$feedback['body']} <br>";
-        echo "Email: {$feedback['email']} <br>";
-        echo '<hr>';
-    }
-?>

@@ -10,7 +10,7 @@ class MainController extends Controller
         $this->view->render('Main page!');
     }
     
-    public function feedback()
+    public function postFeedback()
     {
         $handler = $this->post_handler;
         
@@ -46,16 +46,15 @@ class MainController extends Controller
                 $this->model->saveFeedback();
             }
         }
-        
-        if ($_SESSION['user_group'] == 'autorized') {
-            $result = $this->model->getFeedbacks();
-        } else {
-            $result = [];
-        }
-        $context = [
-            'feedbacks' => $result, 
-            'handler' => $handler,
-        ];
+
+        $context = ['handler' => $handler];
         $this->view->render('Feedback page!', $context);
+    }
+    
+    public function showFeedbacks()
+    {
+        $feedbacks = $this->model->getFeedbacks();
+        $context = ['feedbacks' => $feedbacks];
+        $this->view->render('Feedbacks page!', $context);
     }
 }

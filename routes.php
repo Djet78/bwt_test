@@ -45,12 +45,20 @@ return [
         'perm' => 'autorized',
     ],
     
-    'feedback' => [
+    'post_feedback' => [
         'app_name' => APPS['weather'],
         'controller' => 'main',
-        'action' => 'feedback',
-        'name' => 'feedback',
+        'action' => 'postFeedback',
+        'name' => 'post_feedback',
         'perm' => 'all',
+    ],
+    
+    'show_feedbacks' => [
+        'app_name' => APPS['weather'],
+        'controller' => 'main',
+        'action' => 'showFeedbacks',
+        'name' => 'show_feedbacks',
+        'perm' => 'autorized',
     ],
 
     'login' => [
