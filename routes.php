@@ -1,5 +1,4 @@
 <?php
-
 /*
 Reference to following example to specify routes:
 
@@ -46,12 +45,20 @@ return [
         'perm' => 'autorized',
     ],
     
-    'feedback' => [
+    'post_feedback' => [
         'app_name' => APPS['weather'],
         'controller' => 'main',
-        'action' => 'feedback',
-        'name' => 'feedback',
+        'action' => 'postFeedback',
+        'name' => 'post_feedback',
         'perm' => 'all',
+    ],
+    
+    'show_feedbacks' => [
+        'app_name' => APPS['weather'],
+        'controller' => 'main',
+        'action' => 'showFeedbacks',
+        'name' => 'show_feedbacks',
+        'perm' => 'autorized',
     ],
 
     'login' => [
@@ -59,7 +66,7 @@ return [
         'controller' => 'user',
         'action' => 'login',
         'name' => 'login',
-        'perm' => 'all',
+        'perm' => 'guest',
     ],
     
     'register' => [
@@ -67,7 +74,7 @@ return [
         'controller' => 'user',
         'action' => 'register',
         'name' => 'register',
-        'perm' => 'all',
+        'perm' => 'guest',
     ],
     
     'logout' => [
@@ -79,5 +86,3 @@ return [
     ],
     
 ];
-
-?>

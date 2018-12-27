@@ -1,40 +1,51 @@
 <?php
-
 namespace mvc;
 
-use mvc\View;
+use mvc\view\View;
+use mvc\utils\UserInputHandler;
 
-abstract class Controller{
+abstract class Controller
+{
     
     public $route;
     public $view;
-    public $user_group;
+    public $model;
+    public $post_handler;
+    public $get_handler;
     
-    function __construct($route){
+    public function __construct($route)
+    {
         $this->route = $route;
-        $this->user_group = $_SESSION['user_group'];
-        if (!$this->has_access()){
-            View::redirect_by_name('login');
-        }
         $this->view = new View($route);
-        $this->model = $this->load_model($route['controller']);
+        if (!$this->userHasAccess()) {
+            if ($_SESSION['user_group'] != 'autorized') {
+                $this->view::redirectByName('login');
+            } else {
+                $this->view::redirectByName('homepage');
+            }
+        }
+        $this->model = $this->loadModel($route['controller']);
+        $this->post_handler = new UserInputHandler('POST');
+        $this->get_handler = new UserInputHandler('GET');
     }
     
-    private function has_access(){
+    private function userHasAccess()
+    {
         $required_perm = $this->route['perm'];
-        if ($required_perm == 'all'){
-            return True;
-        } else if ($this->user_group == $required_perm){
-            return True;
+        $user_group = $_SESSION['user_group'];
+        if ($required_perm == 'all') {
+            return true;
+        } elseif ($user_group == $required_perm) {
+            return true;
         }
-        return False;
+        return false;
     }
     
-    private function load_model($name){
+    private function loadModel($name)
+    {
         $path = "{$this->route['app_name']}\models\\" . ucfirst(strtolower($name)) . 'Model';
-        if (class_exists($path)){
+        if (class_exists($path)) {
             return new $path();
-        }
+        } 
     }
 }
-?>
