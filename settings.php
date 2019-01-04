@@ -15,3 +15,5 @@ const DB = [
 const APPS = [
     'weather' => 'weather_app',
 ];
+
+const PARSER_SLEEP_TIME = 60*60;  // 1 hour
