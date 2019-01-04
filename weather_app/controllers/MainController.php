@@ -7,7 +7,7 @@ class MainController extends Controller
 {
     public function index()
     {   
-        $data = file_get_contents('weather.json');
+        $data = file_get_contents('weather_app/weather.json');
         $context = json_decode($data, true);
         
         $this->view->render('Main page!', $context);
