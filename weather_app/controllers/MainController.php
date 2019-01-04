@@ -6,8 +6,11 @@ use mvc\Controller;
 class MainController extends Controller
 {
     public function index()
-    {
-        $this->view->render('Main page!');
+    {   
+        $data = file_get_contents('weather.json');
+        $context = json_decode($data, true);
+        
+        $this->view->render('Main page!', $context);
     }
     
     public function postFeedback()

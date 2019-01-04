@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 require 'mvc/utils/autoload.php';
 require 'settings.php';
 
