@@ -17,7 +17,7 @@ class UserController extends Controller
                 $user = $this->model->getUser('email', $_POST['email'], '`email`, `password`');
                 
                 if ($user) {
-                    $hash = $user[0]['password'];
+                    $hash = $user['password'];
                     $password = $_POST['password'];
                     $handler->passwordVerify($hash, 'password');
                     
@@ -30,7 +30,7 @@ class UserController extends Controller
             }
         }
         $context = ['handler' => $handler];
-        $this->view->render('Login page!', $context);
+        $this->view->render('default', 'Login page!', $context);
     }
     
     public function register()
@@ -97,7 +97,7 @@ class UserController extends Controller
             }
         }
         $context = ['handler' => $handler];
-        $this->view->render('Register page!', $context);
+        $this->view->render('default', 'Register page!', $context);
     }
     
     public function logout()

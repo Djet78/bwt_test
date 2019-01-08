@@ -7,7 +7,7 @@ class MainModel extends Model
 {
     public function getFeedbacks()
     {
-        $result = $this->db->row('SELECT `name`, `body`, `email` FROM feedback;');
+        $result = $this->db->getRows('SELECT `name`, `body`, `email` FROM feedback;');
         return $result;
     }
     

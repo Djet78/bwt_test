@@ -9,7 +9,7 @@ class UserModel extends Model
     public function getUser(string $unique_field, $field_val, string $fields)
     {
         $params = ["$unique_field" => $field_val];
-        $result = $this->db->row("SELECT $fields FROM users WHERE $unique_field = :$unique_field;", $params);
+        $result = $this->db->getRows("SELECT $fields FROM users WHERE $unique_field = :$unique_field;", $params)[0];
         return $result;
     }
     

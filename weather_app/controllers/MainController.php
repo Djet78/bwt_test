@@ -10,7 +10,7 @@ class MainController extends Controller
         $data = file_get_contents('weather_app/weather.json');
         $context = json_decode($data, true);
         
-        $this->view->render('Main page!', $context);
+        $this->view->render('default', 'Main page!', $context);
     }
     
     public function postFeedback()
@@ -51,13 +51,13 @@ class MainController extends Controller
         }
 
         $context = ['handler' => $handler];
-        $this->view->render('Feedback page!', $context);
+        $this->view->render('default', 'Feedback page!', $context);
     }
     
     public function showFeedbacks()
     {
         $feedbacks = $this->model->getFeedbacks();
         $context = ['feedbacks' => $feedbacks];
-        $this->view->render('Feedbacks page!', $context);
+        $this->view->render('default', 'Feedbacks page!', $context);
     }
 }
