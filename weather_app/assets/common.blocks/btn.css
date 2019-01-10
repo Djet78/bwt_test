@@ -1,0 +1,13 @@
+.btn {
+    padding: 5px;
+    text-decoration: none;
+}
+
+.btn__flex-column {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn__style_main-nav {
+    border-left: 2px solid black;
+}

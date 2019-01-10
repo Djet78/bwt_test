@@ -1,0 +1,31 @@
+.flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex__main-page-def {
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 6% 0 6% 0;
+}
+
+.flex__main-block-def {
+    -webkit-flex-flow: column;
+    justify-content: space-between;
+}
+
+.flex__header-block-def {
+    justify-content: space-between;
+}
+
+.flex__footer-block-def {
+    justify-content: space-between;
+}
+
+.flex__main-item{
+    flex-grow: 1;
+}

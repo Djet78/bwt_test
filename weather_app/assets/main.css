@@ -1,0 +1,10 @@
+/* Styles reset */
+@import url(weather_app/assets/reset.css);
+
+/* Main blocks definition */
+@import url(weather_app/assets/common.blocks/block.css);
+@import url(weather_app/assets/common.blocks/flex.css);
+@import url(weather_app/assets/common.blocks/btn.css);
+
+/* Util styles */
+@import url(weather_app/assets/common.blocks/utils.css);
