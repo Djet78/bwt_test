@@ -17,7 +17,7 @@ class UserController extends Controller
                 $user = $this->model->getUser('email', $_POST['email'], '`email`, `password`');
                 
                 if ($user) {
-                    $hash = $user['password'];
+                    $hash = $user[0]['password'];
                     $password = $_POST['password'];
                     $handler->passwordVerify($hash, 'password');
                     
@@ -82,17 +82,20 @@ class UserController extends Controller
             
             $handler->handleInput($required_fields, $fields_processing);
             
-            if (empty($handler->validation_errors)) {
-                $exist_user = $this->model->getUser('email', 'email', '`id`');
+            $email = isset($_POST['email']) ? $_POST['email'] : false;
+            if ($email){
+                $exist_user = $this->model->getUser('email', $email, '`id`');
                 if ($exist_user) {
                     $handler->putError('email', 'User with this email is already exist');
+                }
+            }
+            
+            if (empty($handler->validation_errors)) {
+                $res = $this->model->saveUser();
+                if ($res == true) {
+                    $this->view::redirectByName('login');
                 } else {
-                    $res = $this->model->saveUser();
-                    if ($res == true) {
-                        $this->view::redirectByName('login');
-                    } else {
-                        $this->view::renderErrorPage(500);
-                    }
+                    $this->view::renderErrorPage(500);
                 }
             }
         }
@@ -103,6 +106,6 @@ class UserController extends Controller
     public function logout()
     {
         $_SESSION['user_group'] = 'guest';
-        $this->view::redirectByName('login');
+        $this->view::redirectByName('homepage');
     }
 }
