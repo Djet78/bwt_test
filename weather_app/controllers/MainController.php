@@ -10,6 +10,11 @@ class MainController extends Controller
         $data = file_get_contents('weather_app/weather.json');
         $context = json_decode($data, true);
         
+        if ($_SESSION['user_group'] == 'autorized') {
+            $feedbacks = $this->model->getFeedbacks();
+            $context['feedbacks'] = $feedbacks;
+        }
+        
         $this->view->render('default', 'Main page!', $context);
     }
     
@@ -51,6 +56,12 @@ class MainController extends Controller
         }
 
         $context = ['handler' => $handler];
+        
+        if ($_SESSION['user_group'] == 'autorized') {
+            $feedbacks = $this->model->getFeedbacks();
+            $context['feedbacks'] = $feedbacks;
+        }
+        
         $this->view->render('default', 'Feedback page!', $context);
     }
     

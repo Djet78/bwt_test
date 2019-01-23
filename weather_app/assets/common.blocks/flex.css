@@ -7,25 +7,79 @@
     display: flex;
 }
 
-.flex__main-page-def {
+/*****************************
+    Flex flow orders
+******************************/
+
+.flex__flow_column {
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+}
+
+.flex__flow_row-wrap {
     -webkit-flex-flow: row wrap;
+    -moz-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    -o-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+
+/*****************************
+    Justify content
+******************************/
+
+.flex__jc_space-around {
     justify-content: space-around;
-    padding: 6% 0 6% 0;
 }
 
-.flex__main-block-def {
-    -webkit-flex-flow: column;
+.flex__jc_space-between {
     justify-content: space-between;
 }
 
-.flex__header-block-def {
-    justify-content: space-between;
+.flex__jc_space-evenly {
+    justify-content: space-around;
 }
 
-.flex__footer-block-def {
-    justify-content: space-between;
+.flex__jc_center {
+    justify-content: center;
 }
 
-.flex__main-item{
+.flex__jc_flex-end {
+    justify-content: flex-end;
+}
+
+/*****************************
+    Flex items weights
+******************************/
+
+.flex__grow_0{
+    flex-grow: 0;
+}
+
+.flex__grow_1{
     flex-grow: 1;
+}
+
+.flex__grow_2{
+    flex-grow: 2;
+}
+
+.flex__grow_3{
+    flex-grow: 3;
+}
+
+/*****************************
+    Flex items position
+******************************/
+
+.flex-item__align-self_center {
+    align-self: center;
+}
+
+.flex-item__align-self_flex-end {
+    align-self: flex-end;
 }

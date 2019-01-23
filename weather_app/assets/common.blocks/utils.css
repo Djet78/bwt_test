@@ -1,38 +1,14 @@
-.occupy-all {
-    position: fixed;
-    height: 100%;
-    width: 100%;
+.error {
+    color: red;
 }
 
-.rotate_right-12deg {
-    -moz-transform: rotate(12deg);
-    -o-transform: rotate(12deg);
-    -webkit-transform: rotate(12deg);
+.h1 {
+    padding: 15px;
+    font-size: 40px;
+    font-weight: 600;
 }
 
-.rotate_left-12deg {
-    -moz-transform: rotate(-12deg);
-    -o-transform: rotate(-12deg);
-    -webkit-transform: rotate(-12deg);
-}
-
-.gradient__rt_azure {
-    background: #39BCFF;
-    background: -webkit-linear-gradient(to right top, #543AE8, #00FFA2);
-    background:    -moz-linear-gradient(to right top, #543AE8, #00FFA2);
-    background:         linear-gradient(to right top, #543AE8, #00FFA2);
-}
-
-.gradient__rb_light-green {
-    background: #E1E874;
-    background: -webkit-linear-gradient(to right bottom, #F3FFD2, #CBE84E, #FFCF66);
-    background:    -moz-linear-gradient(to right bottom, #F3FFD2, #CBE84E, #FFCF66);
-    background:         linear-gradient(to right bottom, #F3FFD2, #CBE84E, #FFCF66); 
-}
-
-.gradient__lb_light-green {
-    background: #E1E874;
-    background: -webkit-linear-gradient(to left bottom, #F3FFD2, #CBE84E, #FFCF66);
-    background:    -moz-linear-gradient(to left bottom, #F3FFD2, #CBE84E, #FFCF66);
-    background:         linear-gradient(to left bottom, #F3FFD2, #CBE84E, #FFCF66); 
+.p {
+    padding: 15px;
+    font-size: 18px;
 }

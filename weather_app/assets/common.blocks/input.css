@@ -1,0 +1,36 @@
+.input__common {
+    height: 20px;
+    width: 200px;
+    padding: 3px;
+    transition: 1s;
+    border-color: white;
+}
+
+.input__texar_common {
+    padding: 3px;
+    transition: 1s;
+    border-color: white;
+}
+
+.input__beh-or_common:focus {
+    outline: none;
+}
+
+.input__beh-or_common:focus:invalid {
+    background: rgba(255, 0, 0, .4);
+    border-color: rgba(255, 0, 0, .8);
+}
+
+.input__beh-or_common:valid {
+    background: rgba(0, 178, 3, .4);
+    border-color: rgba(0, 178, 3, .8);
+}
+
+/* Change chrome autofill background color */
+.input__beh-or_common:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px rgba(0, 178, 3, .4) inset;    
+}
+
+.input-box {
+    padding: 5px;
+}

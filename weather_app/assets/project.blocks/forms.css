@@ -1,0 +1,15 @@
+.form__common {
+    padding: 20px;
+}
+
+.legend__on-top-left {
+    position: relative;
+    padding: 5px;
+    top: -3rem;
+    font-weight: 600;
+}
+
+.label__common {
+    padding: 5px;
+    width: 140px;
+}
