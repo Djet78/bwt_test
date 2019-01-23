@@ -1,6 +1,20 @@
 .block__header {
     min-height: 50px;
-    padding-top: 15px;
+    padding-top: 25px;
+}
+
+.block__logo {
+    width: 20%;
+    text-decoration: none;
+}
+
+.block__logo p {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.block__main-nav {
+    width: 25%;
 }
 
 .block__main {
@@ -28,9 +42,27 @@
 }    
 
 .block__footer {
-    min-height: 80px;
+    min-height: 100px;
+    padding-bottom: 20px;
 }
 
-.block__main-nav {
-    width: 25%;
+.block__author {
+    height: 80px;
+    width: 300px;
+}
+
+.block__contacts {
+    height: 80px;
+    width: 300px;   
+}
+
+.block__copyright {
+    height: 80px;
+    width: 300px; 
+}
+
+@media (max-width: 1300px) {
+    .block__main-nav {
+        width: 35%;
+    }
 }

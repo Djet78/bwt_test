@@ -18,13 +18,19 @@
              font__main
              bg-color__gradient_rt-azure">
 
+
     <header class="block__header 
                    flex
                    flex__jc_space-evenly">
         
-        <div class="logo">
-            <p>Logo Placeholder</p>
-        </div>
+        <a class="block__logo
+                  flex 
+                  flex__jc_center
+                  bg-color__gradient_lb-light-green
+                  bg-shadow__s"
+           href="/">
+            <p class="flex-item__align-self_center">Logo Placeholder</p>
+        </a>
         
         <nav class="block__main-nav
                     flex
@@ -62,7 +68,7 @@
                                   } else {
                                       echo 'rotate__left_12deg anim__swing-right';
                                   } 
-                              ?>" 
+                              ?>"
                               
                        href="<?php echo $url; ?>">
                        
@@ -82,7 +88,8 @@
             <!-- End of buttons definition -->
         </nav>
     </header>
-    
+ 
+ 
     <!-- Main block start -->
     <div class="block__main
                 flex 
@@ -113,21 +120,54 @@
     </div>
     <!-- Main block end -->
 
-    
+
     <footer class="block__footer
                    flex
                    flex__jc_space-evenly">
-        <div class="author">
-            <p>author Placeholder</p>
-        </div>
-        <div class="contacts">
-            <p>contacts Placeholder</p>
-        </div>
-        <div class="copyright">
-            <p>copyright Placeholder</p>
-        </div>
         
+        <!-- Autor start -->
+            <div class="block__author
+                        flex
+                        flex__jc_center
+                        bg-color__gradient_lb-light-green
+                        bg-shadow__s
+                        rotate__left_12deg">
+                        
+                <p class="p 
+                          rotate__right_12deg 
+                          flex-item__align-self_center">Created by: Vachelsav Uslistyj</p>
+            </div>
+        <!-- Autor end -->
+        
+        <!-- Contacts start -->
+            <div class="block__contacts                     
+                        flex
+                        flex__jc_center
+                        bg-color__gradient_rb-light-green
+                        bg-shadow__s
+                        rotate__right_12deg">
+                        
+                <adress class="p 
+                               rotate__left_12deg 
+                               flex-item__align-self_center">vacheslavuslistyj@gmail.com</adress>
+            </div>
+        <!-- Contacts end -->
+        
+        <!-- Copyright start -->
+            <div class="block__copyright
+                        flex
+                        flex__jc_center
+                        bg-color__gradient_lb-light-green
+                        bg-shadow__s
+                        rotate__left_12deg">
+                        
+                <p class="p 
+                          rotate__right_12deg 
+                          flex-item__align-self_center">&copyUslistyj V. V. 2019</p>
+            </div>
+        <!-- Copyright end -->        
     </footer>
+    
     
     <?php if ($_SESSION['user_group'] == 'autorized') {?>
         <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
