@@ -58,9 +58,9 @@
                               
                               <?php 
                                   if (($i % 2) == 0) {
-                                      echo 'rotate__right_12deg';
+                                      echo 'rotate__right_12deg anim__swing-left';
                                   } else {
-                                      echo 'rotate__left_12deg';
+                                      echo 'rotate__left_12deg anim__swing-right';
                                   } 
                               ?>" 
                               

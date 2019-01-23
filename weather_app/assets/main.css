@@ -6,6 +6,7 @@
 @import url(slick-1.8.1/slick/slick-theme.css);
 
 /* Common blocks definition */
+@import url(weather_app/assets/common.blocks/anim.css);
 @import url(weather_app/assets/common.blocks/bg-color.css);
 @import url(weather_app/assets/common.blocks/bg-shadow.css);
 @import url(weather_app/assets/common.blocks/btn.css);

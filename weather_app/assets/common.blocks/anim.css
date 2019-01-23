@@ -1,0 +1,23 @@
+@keyframes swing-left { 
+    50% {
+        -moz-transform: rotate(-24deg);
+        -o-transform: rotate(-24deg);
+        -webkit-transform: rotate(-24deg);
+    }
+}
+
+@keyframes swing-right { 
+    50% {
+        -moz-transform: rotate(24deg);
+        -o-transform: rotate(24deg);
+        -webkit-transform: rotate(24deg);
+    }
+}
+
+.anim__swing-left:hover {
+    animation: swing-left .6s cubic-bezier(.96,.09,.09,.92);
+}
+
+.anim__swing-right:hover {
+    animation: swing-right .6s cubic-bezier(.96,.09,.09,.92);
+}
