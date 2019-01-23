@@ -38,13 +38,13 @@ class Db
         return ['res' => $res, 'query' => $query];
     }
     
-    public function row($sql, $params = [])
+    public function getRows($sql, $params = [])
     {
         $query = $this->execQuery($sql, $params)['query'];
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    public function column($sql, $params = [])
+    public function getColumns($sql, $params = [])
     {
         $query = $this->execQuery($sql, $params)['query'];
         return $query->fetchColumn();

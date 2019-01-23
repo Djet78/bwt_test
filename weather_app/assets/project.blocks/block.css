@@ -1,0 +1,68 @@
+.block__header {
+    min-height: 50px;
+    padding-top: 25px;
+}
+
+.block__logo {
+    width: 20%;
+    text-decoration: none;
+}
+
+.block__logo p {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.block__main-nav {
+    width: 25%;
+}
+
+.block__main {
+    min-height: max-content;
+    width: 98%;
+}
+
+.block__content {
+    height: 75%;
+    width: 50%;
+    padding: 5% 0;
+    min-height: 450px;
+    min-width: 750px;
+    margin-top: 8%;
+    margin-bottom: 8%;
+}    
+
+.block__feedback {
+    padding: 10% 0;
+    height: 400px;
+    min-height: 400px;
+    min-width: 500px;
+    margin-top: 8%;
+    margin-bottom: 8%;
+}    
+
+.block__footer {
+    min-height: 100px;
+    padding-bottom: 20px;
+}
+
+.block__author {
+    height: 80px;
+    width: 300px;
+}
+
+.block__contacts {
+    height: 80px;
+    width: 300px;   
+}
+
+.block__copyright {
+    height: 80px;
+    width: 300px; 
+}
+
+@media (max-width: 1300px) {
+    .block__main-nav {
+        width: 35%;
+    }
+}

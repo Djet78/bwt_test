@@ -1,0 +1,15 @@
+.btn__size-m {
+    padding: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    height: 50px;
+    width: 80px;
+}
+
+.btn__sub_size-m {
+    padding: 5px;
+    text-decoration: none;
+    width: 60px;
+    font-family: 'Raleway', sans-serif;
+}

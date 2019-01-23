@@ -30,7 +30,7 @@ class UserController extends Controller
             }
         }
         $context = ['handler' => $handler];
-        $this->view->render('Login page!', $context);
+        $this->view->render('default', 'Login page!', $context);
     }
     
     public function register()
@@ -82,27 +82,30 @@ class UserController extends Controller
             
             $handler->handleInput($required_fields, $fields_processing);
             
-            if (empty($handler->validation_errors)) {
-                $exist_user = $this->model->getUser('email', 'email', '`id`');
+            $email = isset($_POST['email']) ? $_POST['email'] : false;
+            if ($email){
+                $exist_user = $this->model->getUser('email', $email, '`id`');
                 if ($exist_user) {
                     $handler->putError('email', 'User with this email is already exist');
+                }
+            }
+            
+            if (empty($handler->validation_errors)) {
+                $res = $this->model->saveUser();
+                if ($res == true) {
+                    $this->view::redirectByName('login');
                 } else {
-                    $res = $this->model->saveUser();
-                    if ($res == true) {
-                        $this->view::redirectByName('login');
-                    } else {
-                        $this->view::renderErrorPage(500);
-                    }
+                    $this->view::renderErrorPage(500);
                 }
             }
         }
         $context = ['handler' => $handler];
-        $this->view->render('Register page!', $context);
+        $this->view->render('default', 'Register page!', $context);
     }
     
     public function logout()
     {
         $_SESSION['user_group'] = 'guest';
-        $this->view::redirectByName('login');
+        $this->view::redirectByName('homepage');
     }
 }
