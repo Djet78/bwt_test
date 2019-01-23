@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title><?php echo $title; ?></title>
 
-    <style>
-        <?php require "weather_app/assets/main.css"; ?>
-    </style>
+    <style><?php require "weather_app/assets/main.css";?></style>
     
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,600" rel="stylesheet">
 
@@ -147,9 +145,9 @@
                         bg-shadow__s
                         rotate__right_12deg">
                         
-                <adress class="p 
-                               rotate__left_12deg 
-                               flex-item__align-self_center">vacheslavuslistyj@gmail.com</adress>
+                <p class="p 
+                          rotate__left_12deg 
+                          flex-item__align-self_center">vacheslavuslistyj@gmail.com</p>
             </div>
         <!-- Contacts end -->
         
@@ -163,18 +161,18 @@
                         
                 <p class="p 
                           rotate__right_12deg 
-                          flex-item__align-self_center">&copyUslistyj V. V. 2019</p>
+                          flex-item__align-self_center">&copy;Uslistyj V. V. 2019</p>
             </div>
         <!-- Copyright end -->        
     </footer>
     
     
     <?php if ($_SESSION['user_group'] == 'autorized') {?>
-        <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-        <script src="slick-1.8.1/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script src="slick-1.8.1/slick/slick.js"></script>
         
         <!-- Slick settings for feedback block -->
-        <script type="text/javascript">
+        <script>
           $(document).on('ready', function() {
             $('.feedback').slick();
           });

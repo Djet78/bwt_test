@@ -65,7 +65,7 @@
                         flex 
                         flex__jc_space-between">
                         
-                <label for="emal" class="label__common">Email*</label>
+                <label for="email" class="label__common">Email*</label>
                 <input type="email" 
                        name="email"
                        id="email"
@@ -128,9 +128,9 @@
                         flex__jc_space-between">
                         
                 <?php $handler->displayErrorsIfErrors('gender'); ?>
-                <label for="gender" class="label__common">Gender</label>
-                <p><input type="radio" name="gender" id="gender" value="m">male</p>
-                <p><input type="radio" name="gender" id="gender" value="f">female</p> 
+                <label for="gender-m" class="label__common">Gender</label>
+                <p><input type="radio" name="gender" id="gender-m" value="m">male</p>
+                <p><input type="radio" name="gender" id="gender-f" value="f">female</p> 
             </div>
         <!-- Gender end -->
         
