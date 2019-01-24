@@ -45,11 +45,11 @@ class View
     public static function renderErrorPage($code)
     {
         http_response_code($code);
-        $path = BASE_DIR ."/mvc/view/http_error_pages/{$code}.php";
+        $path = "mvc/view/http_error_pages/{$code}.php";
         if (file_exists($path)) {
             require $path;
         } else {
-            require BASE_DIR ."/mvc/view/http_error_pages/default_error_page.php";
+            require "mvc/view/http_error_pages/default_error_page.php";
         }
         exit;
     }
@@ -65,7 +65,7 @@ class View
      */
     public static function redirectByName($url_name)
     {
-        $routes = require BASE_DIR . '/routes.php';
+        $routes = require 'routes.php';
         foreach ($routes as $url => $params) {
             if ($url_name == $params['name']) {
                 self::redirect($url);

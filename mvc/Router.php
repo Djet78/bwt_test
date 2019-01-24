@@ -23,7 +23,7 @@ class Router
     
     public function __construct()
     {
-        $routes = require BASE_DIR . '/routes.php';
+        $routes = require 'routes.php';
         foreach ($routes as $url => $params) {
             $this->addRoute($url, $params);
         }

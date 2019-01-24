@@ -1,6 +1,4 @@
 <?php
-const BASE_DIR = __DIR__;
-
 /**
  * @var bool  Used for develop purposes. Not recommended set to true in production!
  */
