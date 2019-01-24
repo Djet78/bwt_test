@@ -1,6 +1,6 @@
 <?php
 /**
- * @var bool  Used for develop purposes. Not recommended set to true in production!
+ * @var bool  Used for develop purposes. Not recommended set it to true in production!
  */
 const DEBUG = true;
 
