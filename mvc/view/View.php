@@ -21,9 +21,13 @@ class View
     }
     
     /**
+     * Render view from '$this->path' within given $layout
+     *
      * @param string   $layout Name for used layout
      * @param string   $title   Used in <title> tag in the 'layout'
      * @param array    $context  Used to pass extra data in views
+     *
+     * @throws NoViewError
      */
     public function render($layout, $title, $context = [])
     {
@@ -56,6 +60,9 @@ class View
         exit;
     }
     
+    /**
+     * Simple redirect but it searches url in '/routes.php' by name 
+     */
     public static function redirectByName($url_name)
     {
         $routes = require BASE_DIR . '/routes.php';

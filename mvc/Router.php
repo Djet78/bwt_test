@@ -3,9 +3,22 @@ namespace mvc;
 
 use mvc\view\View;
 
+/**
+ * Coordinates application work flow
+ *
+ * Takes passed url and searches through all specified routes to find corresponding one,
+ * pass required data from route to contoller and run controller corresponding method.
+ */
 class Router
 {
+    /**
+     * @var array  All routes specified in '/routes.php' file pathed through 'addRoute' method
+     */
     protected $routes = [];
+    
+    /**
+     * @var array  Matched route params
+     */
     protected $params = [];
     
     public function __construct()
@@ -25,7 +38,17 @@ class Router
         $route = '#^'.$route.'/?$#';
         $this->routes[$route] = $params;
     }
-
+    
+    /**
+     * MVC starting point
+     *
+     * Searches for appropriate controller and call its method specified in routes
+     *
+     * Redirect to 404 error page with 404 responce code if:
+     *     No routes match
+     *     Controller absent
+     *     Controller method absent
+     */
     public function run()
     {
         if ($this->isMatch()) {
@@ -46,6 +69,11 @@ class Router
         }
     }   
     
+    /**
+     * Searches match for url in registered routes
+     *
+     * @return bool
+     */
     private function isMatch()
     {
         $url = ltrim($_SERVER['REQUEST_URI'], '/');

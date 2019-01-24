@@ -1,5 +1,15 @@
 <?php
-function debug($var, $backtrace=True) {
+
+/**
+ * Used for develop purposes
+ *
+ * Print useful information ('var_dump()') about given objects and a backtrace.
+ * Finishes script after that
+ *
+ * @param $var        Any variable or object
+ * @param $backtrace  Show backrtace or not. Default: true
+ */
+function debug($var, $backtrace=true) {
     echo '<pre>';
     var_dump($var);
     echo '</pre>';
@@ -10,6 +20,9 @@ function debug($var, $backtrace=True) {
     exit;
 }
 
+/**
+ * Used for develop purposes
+ */
 function pretty_backtrace() {
     $bt = debug_backtrace();
     foreach ($bt as $trace) {

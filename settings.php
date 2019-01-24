@@ -1,9 +1,14 @@
 <?php
 const BASE_DIR = __DIR__;
 
-const DEBUG = True;
+/**
+ * @var bool  Used for develop purposes. Not recommended set to true in production!
+ */
+const DEBUG = true;
 
-// PDO mysql connection settings
+/** 
+ * @var array  PDO mysql connection settings
+ */
 const DB = [
     'host' => 'localhost',
     'dbname' => 'bwt',
@@ -11,7 +16,9 @@ const DB = [
     'password' => 'root',
 ];
 
-//define your apps here
+/**
+ * @var array  Defined apps ['app_name' => 'app_folder', 'app_name_2' => 'app_folder', ...]
+ */
 const APPS = [
     'weather' => 'weather_app',
 ];

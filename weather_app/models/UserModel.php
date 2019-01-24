@@ -6,6 +6,11 @@ use mvc\model\Model;
 
 class UserModel extends Model
 {
+    /**
+     * Load user from db
+     *
+     * @return array
+     */        
     public function getUser(string $unique_field, $field_val, string $fields)
     {
         $params = ["$unique_field" => $field_val];
@@ -13,6 +18,11 @@ class UserModel extends Model
         return $result;
     }
     
+    /**
+     * Save user in db
+     *
+     * @return bool
+     */        
     public function saveUser()
     {
         $sql = <<<'INSERT'
