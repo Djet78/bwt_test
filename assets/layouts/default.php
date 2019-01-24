@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title><?php echo $title; ?></title>
 
-    <style><?php require "weather_app/assets/main.css";?></style>
+    <style><?php require "assets/main.css";?></style>
     
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,600" rel="stylesheet">
 
