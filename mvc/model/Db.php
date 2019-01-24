@@ -22,7 +22,7 @@ class Db
             'mysql:host='.DB['host'].'; dbname='.DB['dbname']. '; charset=utf8', 
             DB['user'],     
             DB['password'],
-            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+            [PDO::ATTR_ERRMODE => (DEBUG) ? PDO::ERRMODE_EXCEPTION : PDO::ERRMODE_SILENT]
         );
     }
     
