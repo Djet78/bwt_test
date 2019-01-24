@@ -5,20 +5,25 @@ require 'view_errors.php';
 
 use NoViewError;
 
+/**
+ * Implemets page rendering and redirections
+ */
 class View
 {    
+    /**
+     * @var string  Contain path to specified view
+     */
     private $path;
-    private $assets_path;
         
     public function __construct($route)
     {
         $this->path = "{$route['app_name']}/views/{$route['controller']}/{$route['action']}.php";
-        $this->assets_path = "/{$route['app_name']}/assets/";
     }
     
     /**
-     *@param string $title   Used in <title> tag in the '$this->layout'
-     *@param array  $context  Used to pass extra data in views
+     * @param string   $layout Name for used layout
+     * @param string   $title   Used in <title> tag in the 'layout'
+     * @param array    $context  Used to pass extra data in views
      */
     public function render($layout, $title, $context = [])
     {
@@ -27,7 +32,7 @@ class View
             ob_start();
             require $this->path;
             $content = ob_get_clean();
-            require BASE_DIR . "{$this->assets_path}/layouts/{$layout}.php";
+            require "assets/layouts/{$layout}.php";
         } else {
             throw new NoViewError('No such view ' . $this->path);
         }
