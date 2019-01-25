@@ -2,7 +2,7 @@
 /**
  * @var bool  Used for develop purposes. Not recommended set it to true in production!
  */
-const DEBUG = true;
+const DEBUG = false;
 
 /** 
  * @var array  PDO mysql connection settings

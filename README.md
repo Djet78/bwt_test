@@ -22,14 +22,24 @@ Task description:
 
 
 Implementation differences from task:
- - I haven't separate page for feedbacks. Instead i show them for authenticated users on every page they can see it.
+ - I haven't separate page for feedbacks. Instead I show them for authenticated users on every page they can see it.
  - I don't used bootstrap 3 - in order to get more practice with core html and css.
  - I don't use Guzzle. (I got error: 'Fatal error: Uncaught GuzzleHttp\Exception\ConnectException: cURL error 52: Empty reply from server')
    I didn't found workaround for Guzzle, so I used php build in methods. 
    (Literally, I parse HTML and get weather value from there. (I know it is not good))
 
 
+Other implementation details:
+ - To collect weather data you should run weather_app/gismeteo_parser.php independently.
+ - Also change project settings in 'settings.php' accordingly to your environ and needs
+
+
 Used software:
   php  - 7.2.12
   xampp - 7.2.12
   MySQL - 5.5.60
+
+
+Followed standards:
+  PSR-2 for PHP
+  BEM for HTML and CSS
