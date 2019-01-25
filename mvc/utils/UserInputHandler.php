@@ -126,6 +126,19 @@ class UserInputHandler
         }
     }
     
+    public function validateCaptcha() 
+    {
+        $g_uri = 'https://www.google.com/recaptcha/api/siteverify';
+        $g_cap_resp = $this->http_method_ref['g-recaptcha-response'];
+        $query = "{$g_uri}?secret=".CAPTCHA_SEC_KEY."&response={$g_cap_resp}&remoteip={$_SERVER['REMOTE_ADDR']}";
+
+        $response = json_decode(file_get_contents($query), true);
+        
+        if ($response['success'] == false) {
+            $this->putError('captcha', 'Please verify the captcha');
+        }
+    }
+    
     public function validateChoice($choices_arr, $field)
     {
         $choice = $this->http_method_ref[$field];
@@ -232,6 +245,7 @@ class UserInputHandler
             }
         }
     }
+    
     // `````````````````````````````````````````````````````````````
     // For errors handling
     // .............................................................    

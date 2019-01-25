@@ -56,6 +56,7 @@ class MainController extends Controller
             ];
                
             $handler->handleInput($required_fields, $fields_processing);
+            $handler->validateCaptcha();
             
             if (empty($handler->validation_errors)) {
                 $this->model->saveFeedback();

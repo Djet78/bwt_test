@@ -7,7 +7,7 @@
     <style><?php require "assets/main.css";?></style>
     
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,600" rel="stylesheet">
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body class="flex 
