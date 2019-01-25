@@ -70,6 +70,20 @@
             </div>
         <!-- Email end -->
         
+        <!-- Captcha -->
+            <div class="error
+                        flex
+                        flex__jc_center">   
+                <?php $handler->displayErrorsIfErrors('captcha'); ?>
+            </div>
+            
+            <div class="g-recaptcha
+                        flex
+                        flex__jc_center" 
+                 data-sitekey="<?php echo CAPTCHA_PUB_KEY?>">
+            </div>
+        <!-- Captcha end -->
+        
         <div class="input-box 
                     flex 
                     flex__jc_flex-end">

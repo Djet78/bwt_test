@@ -4,13 +4,23 @@ namespace weather_app\models;
 use mvc\model\Model;
 
 class MainModel extends Model
-{
+{   
+    /**
+     * Load feedbacks from db
+     *
+     * @return array
+     */    
     public function getFeedbacks()
     {
         $result = $this->db->getRows('SELECT `name`, `body`, `email` FROM feedback;');
         return $result;
     }
-    
+
+    /**
+     * Save feedback in db
+     *
+     * @return bool
+     */        
     public function saveFeedback()
     {
         $sql = <<<'INSERT'

@@ -5,6 +5,10 @@ use mvc\Controller;
 
 class UserController extends Controller
 {
+    /**
+     * Load login page
+     * Handle post data from login form
+     */
     public function login()
     {
         $handler = $this->post_handler;
@@ -33,6 +37,10 @@ class UserController extends Controller
         $this->view->render('default', 'Login page!', $context);
     }
     
+    /**
+     * Load register page
+     * Handle post data from register form
+     */    
     public function register()
     {
         $handler = $this->post_handler;
@@ -103,9 +111,12 @@ class UserController extends Controller
         $this->view->render('default', 'Register page!', $context);
     }
     
+    /**
+     * Logout user from system and redirects him to login page
+     */
     public function logout()
     {
         $_SESSION['user_group'] = 'guest';
-        $this->view::redirectByName('homepage');
+        $this->view::redirectByName('login');
     }
 }

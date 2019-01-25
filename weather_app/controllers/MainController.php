@@ -5,6 +5,9 @@ use mvc\Controller;
 
 class MainController extends Controller
 {
+    /**
+     * Load main page
+     */
     public function index()
     {   
         $data = file_get_contents('weather_app/weather.json');
@@ -18,6 +21,10 @@ class MainController extends Controller
         $this->view->render('default', 'Main page!', $context);
     }
     
+    /**
+     * Load feedback page
+     * Handle post data from feedback form
+     */
     public function postFeedback()
     {
         $handler = $this->post_handler;
@@ -49,6 +56,7 @@ class MainController extends Controller
             ];
                
             $handler->handleInput($required_fields, $fields_processing);
+            $handler->validateCaptcha();
             
             if (empty($handler->validation_errors)) {
                 $this->model->saveFeedback();
@@ -63,12 +71,5 @@ class MainController extends Controller
         }
         
         $this->view->render('default', 'Feedback page!', $context);
-    }
-    
-    public function showFeedbacks()
-    {
-        $feedbacks = $this->model->getFeedbacks();
-        $context = ['feedbacks' => $feedbacks];
-        $this->view->render('default', 'Feedbacks page!', $context);
     }
 }

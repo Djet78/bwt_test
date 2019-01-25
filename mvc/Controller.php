@@ -4,9 +4,20 @@ namespace mvc;
 use mvc\view\View;
 use mvc\utils\UserInputHandler;
 
+/**
+ * Handle all logic flow
+ *
+ * Obtained instances:
+ *     Corresponding model
+ *     View
+ *     Post user input handler
+ *     Get user input handler  
+ */
 abstract class Controller
 {
-    
+    /**
+     * @var array  Route given by Router, if it mathces any route in '/routes.php' 
+     */
     public $route;
     public $view;
     public $model;
@@ -17,6 +28,7 @@ abstract class Controller
     {
         $this->route = $route;
         $this->view = new View($route);
+        
         if (!$this->userHasAccess()) {
             if ($_SESSION['user_group'] != 'autorized') {
                 $this->view::redirectByName('login');
@@ -24,11 +36,17 @@ abstract class Controller
                 $this->view::redirectByName('homepage');
             }
         }
+        
         $this->model = $this->loadModel($route['controller']);
         $this->post_handler = new UserInputHandler('POST');
         $this->get_handler = new UserInputHandler('GET');
     }
     
+    /**
+     * Checks user rights for the passed URL
+     *
+     * @return bool
+     */
     private function userHasAccess()
     {
         $required_perm = $this->route['perm'];

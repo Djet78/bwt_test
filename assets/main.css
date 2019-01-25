@@ -1,0 +1,23 @@
+/* Styles reset */
+@import url(assets/reset.css);
+
+/* 3rd party css files */
+@import url(slick-1.8.1/slick/slick.css);
+@import url(slick-1.8.1/slick/slick-theme.css);
+
+/* Common blocks definition */
+@import url(assets/common.blocks/anim.css);
+@import url(assets/common.blocks/bg-color.css);
+@import url(assets/common.blocks/bg-shadow.css);
+@import url(assets/common.blocks/btn.css);
+@import url(assets/common.blocks/flex.css);
+@import url(assets/common.blocks/input.css);
+@import url(assets/common.blocks/rotate.css);
+@import url(assets/common.blocks/utils.css);
+
+/* Project blocks definition */
+@import url(assets/project.blocks/block.css);
+@import url(assets/project.blocks/feedback.css);
+@import url(assets/project.blocks/forms.css);
+@import url(assets/project.blocks/font.css);
+@import url(assets/project.blocks/slick.css);

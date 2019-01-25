@@ -1,1 +1,1 @@
-<h1>Service error! 404</h1>
+<h1>Service error! 500</h1>
