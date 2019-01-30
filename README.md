@@ -35,11 +35,11 @@ Other implementation details:
 
 
 Used software:
-  php  - 7.2.12
-  xampp - 7.2.12
-  MySQL - 5.5.60
+ - php  - 7.2.12
+ - xampp - 7.2.12
+ - MySQL - 5.5.60
 
 
 Followed standards:
-  PSR-2 for PHP
-  BEM for HTML and CSS
+ - PSR-2 for PHP
+ - BEM for HTML and CSS
